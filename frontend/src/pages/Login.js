@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-// No icons used in this component currently
 import { motion } from 'framer-motion';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import api from '../services/api';
 
@@ -13,6 +13,17 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showSupportModal, setShowSupportModal] = useState(false);
   const navigate = useNavigate();
+
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -56,7 +67,19 @@ const Login = () => {
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-serious p-4">
+    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-serious p-4 position-relative">
+      {/* Theme Toggle for Login */}
+      <div className="position-absolute top-0 end-0 p-4">
+        <button
+          onClick={toggleTheme}
+          className="btn-ghost p-2 d-flex align-items-center justify-content-center"
+          style={{ fontSize: '1.2rem', cursor: 'pointer' }}
+          title={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
+        >
+          {theme === 'light' ? <FaMoon /> : <FaSun className="text-warning" />}
+        </button>
+      </div>
+
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -73,7 +96,7 @@ const Login = () => {
             <img
               src={logo}
               alt="Logo"
-              style={{ maxHeight: '60px', width: 'auto' }}
+              style={{ maxHeight: '60px', width: 'auto', filter: 'var(--logo-filter)' }}
               className="mb-4"
             />
             <h5 className="fw-bold text-serious mb-1" style={{ letterSpacing: '1px' }}>

@@ -8,11 +8,34 @@
   --text-main: #1e293b;
   --text-muted: #64748b;
   --border-light: rgba(0, 0, 0, 0.05);
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --navbar-bg: rgba(255, 255, 255, 0.8);
 
   --bs-primary: var(--institutional-red);
   --bs-primary-rgb: 230, 57, 70;
   --bs-danger: var(--institutional-red);
   --bs-body-bg: var(--bg-serious);
+  --logo-filter: none;
+}
+
+[data-theme='dark'] {
+  --primary-serious: #f8fafc;
+  --bg-serious: #0f172a;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-light: rgba(255, 255, 255, 0.1);
+  --card-bg: #1e293b;
+  --input-bg: #1e293b;
+  --navbar-bg: rgba(15, 23, 42, 0.8);
+  --logo-filter: brightness(0) invert(1);
+
+  --bs-body-bg: var(--bg-serious);
+  --bs-body-color: var(--text-main);
+}
+
+.text-serious {
+  color: var(--primary-serious) !important;
 }
 
 .bg-serious {
@@ -47,7 +70,7 @@ h5 {
 
 /* Componentes Minimalistas */
 .pro-card {
-  background: white;
+  background: var(--card-bg);
   border: 1px solid var(--border-light);
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -65,7 +88,8 @@ h5 {
   border-radius: 8px;
   padding: 10px 12px;
   transition: all 0.2s ease;
-  background-color: white;
+  background-color: var(--input-bg);
+  color: var(--text-main);
   font-size: 0.95rem;
 }
 
@@ -131,7 +155,7 @@ h5 {
 
 /* Utilidades de Layout */
 .navbar-minimalist {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+  background-color: var(--navbar-bg) !important;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
 }
@@ -189,7 +213,7 @@ h5 {
 
 /* Tarjetas de Acceso Rápido */
 .quick-access-tile {
-  background: white;
+  background: var(--card-bg);
   border: 1px solid var(--border-light);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -296,22 +320,25 @@ button[type="submit"]:active {
 }
 
 .dropdown-menu-minimal {
+  background-color: var(--card-bg) !important;
   border-radius: 12px !important;
   font-size: 0.85rem !important;
   min-width: 160px !important;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid var(--border-light) !important;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
 }
 
 .dropdown-menu-minimal .dropdown-item {
   transition: all 0.2s ease;
   padding: 0.75rem 1rem !important;
+  color: var(--text-main) !important;
 }
 
 .dropdown-menu-minimal .dropdown-item:hover {
-  background-color: #f8f9fa !important;
+  background-color: var(--bg-serious) !important;
   padding-left: 1.25rem !important;
+  color: var(--primary-serious) !important;
 }
 
 .uppercase {

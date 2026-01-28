@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { FaUserCircle, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaUserCircle, FaSignOutAlt, FaUser, FaSun, FaMoon } from 'react-icons/fa';
 
 import logo from '../assets/logo.png';
 
@@ -9,6 +9,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const token = localStorage.getItem('token');
   const userStr = localStorage.getItem('user');
   const user = userStr ? JSON.parse(userStr) : null;
@@ -26,6 +27,15 @@ const Navigation = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -63,7 +73,8 @@ const Navigation = () => {
             style={{
               transition: 'all 0.3s ease-in-out',
               height: scrolled ? "36px" : "46px",
-              width: 'auto'
+              width: 'auto',
+              filter: 'var(--logo-filter)'
             }}
           />
         </Navbar.Brand>
@@ -100,7 +111,16 @@ const Navigation = () => {
               </Nav.Link>
             )}
 
-            <div className="ms-lg-4 mt-3 mt-lg-0">
+            <div className="ms-lg-4 mt-3 mt-lg-0 d-flex align-items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="btn-ghost p-2 d-flex align-items-center justify-content-center"
+                style={{ fontSize: '1.1rem', cursor: 'pointer' }}
+                title={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
+              >
+                {theme === 'light' ? <FaMoon /> : <FaSun className="text-warning" />}
+              </button>
+
               <Dropdown align="end">
                 <Dropdown.Toggle variant="transparent" className="p-0 border-0 d-flex align-items-center gap-2 no-caret">
                   <div
