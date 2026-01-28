@@ -76,16 +76,23 @@
 }
 
 [data-theme='dark'] .form-control,
-[data-theme='dark'] .form-select {
+[data-theme='dark'] .form-select,
+[data-theme='dark'] .pro-input {
   background-color: var(--input-bg) !important;
-  color: var(--text-main) !important;
+  color: #ffffff !important;
   border-color: var(--border-light) !important;
 }
 
+[data-theme='dark'] .form-control::placeholder,
+[data-theme='dark'] .pro-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
 [data-theme='dark'] .form-control:focus,
-[data-theme='dark'] .form-select:focus {
+[data-theme='dark'] .form-select:focus,
+[data-theme='dark'] .pro-input:focus {
   background-color: var(--input-bg) !important;
-  color: var(--text-main) !important;
+  color: #ffffff !important;
   border-color: var(--institutional-red) !important;
   box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1) !important;
 }
