@@ -75,19 +75,123 @@
   --bs-table-border-color: var(--border-light);
 }
 
-[data-theme='dark'] .dropdown-item {
-  color: var(--text-main);
+[data-theme='dark'] .form-control,
+[data-theme='dark'] .form-select {
+  background-color: var(--input-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-light) !important;
 }
 
-[data-theme='dark'] .list-group-item {
-  background-color: var(--card-bg);
-  color: var(--text-main);
+[data-theme='dark'] .form-control:focus,
+[data-theme='dark'] .form-select:focus {
+  background-color: var(--input-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--institutional-red) !important;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1) !important;
+}
+
+[data-theme='dark'] .form-control:disabled,
+[data-theme='dark'] .form-control[readonly] {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-muted) !important;
+  opacity: 0.8;
+}
+
+[data-theme='dark'] .form-check-input {
+  background-color: var(--input-bg);
   border-color: var(--border-light);
 }
 
+[data-theme='dark'] .form-check-input:checked {
+  background-color: var(--institutional-red);
+  border-color: var(--institutional-red);
+}
+
+[data-theme='dark'] .form-label,
+[data-theme='dark'] label {
+  color: var(--text-main) !important;
+  opacity: 0.9;
+}
+
+/* Fix for profile-specific elements liked bg-light in cards */
+[data-theme='dark'] .card .bg-light {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-light) !important;
+}
+
+/* Fix for step indicators that stay white */
+[data-theme='dark'] .bg-white.border.text-muted {
+  background-color: var(--bg-serious) !important;
+  border-color: var(--border-light) !important;
+}
+
+[data-theme='dark'] .modal-header,
+[data-theme='dark'] .modal-footer {
+  border-color: var(--border-light) !important;
+}
+
+[data-theme='dark'] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+[data-theme='dark'] .nav-link-pro:hover {
+  color: var(--primary-serious) !important;
+}
+
+[data-theme='dark'] .nav-link-pro.active {
+  color: var(--institutional-red) !important;
+}
+
+[data-theme='dark'] .dropdown-divider {
+  border-top-color: var(--border-light);
+}
+
+[data-theme='dark'] .dropdown-item {
+  color: var(--text-main) !important;
+}
+
+[data-theme='dark'] .dropdown-item:hover {
+  background-color: var(--bg-serious) !important;
+  color: var(--primary-serious) !important;
+}
+
+[data-theme='dark'] .list-group-item {
+  background-color: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-light) !important;
+}
+
 [data-theme='dark'] .card-header {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-bottom-color: var(--border-light);
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-bottom-color: var(--border-light) !important;
+}
+
+[data-theme='dark'] .alert-warning {
+  background-color: rgba(255, 193, 7, 0.1) !important;
+  border: 1px solid rgba(255, 193, 7, 0.3) !important;
+  color: #ffc107 !important;
+}
+
+[data-theme='dark'] .alert-danger {
+  background-color: rgba(230, 57, 70, 0.1) !important;
+  border: 1px solid rgba(230, 57, 70, 0.3) !important;
+  color: #e63946 !important;
+}
+
+[data-theme='dark'] .alert-success {
+  background-color: rgba(40, 167, 69, 0.1) !important;
+  border: 1px solid rgba(40, 167, 69, 0.3) !important;
+  color: #28a745 !important;
+}
+
+/* Specific fix for text-secondary which is used in Profile labels */
+[data-theme='dark'] .text-secondary {
+  color: var(--text-muted) !important;
+}
+
+/* Fix for profile step progress bar background */
+[data-theme='dark'] .bg-light[style*="height: 2px"] {
+  background-color: var(--border-light) !important;
 }
 
 .text-serious {
